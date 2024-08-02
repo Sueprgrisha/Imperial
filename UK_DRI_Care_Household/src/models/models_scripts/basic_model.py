@@ -43,8 +43,10 @@ def model_rf(data,n_estimators=20):
 
     X_train, X_test, y_train, y_test = data
     clf = RandomForestClassifier(random_state=42, n_estimators = n_estimators)
+    X = pd.concat([X_train,X_test])
+    y = pd.concat([y_train y_test])
     # Perform 5-fold cross-validation
-    cv_scores = cross_val_score(clf, X_train, y_train, cv=5)
+    cv_scores = cross_val_score(clf, X, y, cv=5)
     print(f'5-Fold Cross-Validation Scores: {cv_scores}')
     print(f'Mean Cross-Validation Accuracy: {np.mean(cv_scores)}')
 
